@@ -1,2 +1,2 @@
 # GestiNotes
-Travail paratique du cours de programmation de SIM
+Travail pratique du cours de programmation de SIM
