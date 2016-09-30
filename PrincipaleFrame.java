@@ -4,13 +4,16 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.awt.Color;
 /**
+ 28/09/2016
  *
- *
- * @author Patrick Domingues + 28/9/2016
+ * @author Patrick Domingues
+ * 28/9/2016
  */
 public class PrincipaleFrame extends JFrame implements ActionListener {
 
 	//Attributs
+
+	Etablissement etablissement = new Etablissement();
 
 	//Attributs graphiques
 	JPanel simplePanel;
@@ -58,88 +61,62 @@ public class PrincipaleFrame extends JFrame implements ActionListener {
 		simplePanel.add( boutons.get(boutons.size()-1)); 		//Ajoute bouton au panneau
 		boutons.get(boutons.size()-1).addActionListener(this);	//Rend le bouton interactif
 	}
-	
+
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
 			if(event.getSource()==boutons.get(0)){
 				//Création d'un élève dans un croupe (crée un autre groupe si le groupe présent à 10 élèves)
-				
-				JDialog dialog = new JDialog (this,"Inscription d'un élève", true);
-				dialog.setLocationRelativeTo(null);
-				dialog.setSize(400,200);
-				dialog.setResizable (false);
-				
-				GridLayout gl2 = new GridLayout(4, 0, 0, 25);	//Cree GridLayout
-				dialog.setLayout(gl2);
-				
-				JLabel label1 = new JLabel("Nom de l'étudiant");
-				dialog.getContentPane().add(label1);
-				JTextField textField1 = new JTextField(30);
-				dialog.getContentPane().add(textField1);
-				
-				JLabel label2 = new JLabel("Prénom de l'étudiant");
-				dialog.getContentPane().add(label2);
-				JTextField textField2 = new JTextField(30);
-				dialog.getContentPane().add(textField2);
-				
-				JLabel label3 = new JLabel("date de naissance (JJ-MM-AAAA)");
-				dialog.getContentPane().add(label3);
-				JTextField textField3 = new JTextField(30);
-				dialog.getContentPane().add(textField3);
-				
-				JButton button1 = new JButton("Confirmer");
-				dialog.getContentPane().add(new JButton("Confirmer"));
-				button1.addActionListener(this);
-				
-				JButton button2 = new JButton("Quitter");
-				dialog.getContentPane().add(new JButton("Quitter"));
-				button2.addActionListener(this);
-				
-/*								
-				if(event.getSource()==button1){
-					
-				}
-				if(event.getSource()==button2){	
-					dialog.setVisible(false);
-				}
-						
-À COMPLETER*/				
-				dialog.setVisible(true);
-				
-				
+
+				String nom = JOptionPane.showInputDialog(null,"Entrer le nom de l'élève:","Enregistrer un élève", JOptionPane.QUESTION_MESSAGE);
+				String prenom = JOptionPane.showInputDialog(null,"Entrer le prénom de l'élève:","Enregistrer un élève", JOptionPane.QUESTION_MESSAGE);
+				String date = JOptionPane.showInputDialog(null,"Entrer la date de naissance de l'élève (JJ-MM-AAAA):","Enregistrer un élève", JOptionPane.QUESTION_MESSAGE);
+				Eleve eleve = new Eleve(nom, prenom, date);
+
+				etablissement.addGroupe(eleve);
+
+				/*etablissement.tabGroupe.get(0).addEleve(eleve);*/
+
+				/*if (etablissement.tabGroupe.get(0).getTabEleve().size()<etablissement.ELEVES_PAR_GROUPE)
+					etablissement.tabGroupe.get(0).addEleve(eleve);
+
+				else etablissement.addGroupe(eleve);*/
+
+				//System.out.println(etablissement.tabGroupe);
+				//Groupe groupe = new Groupe("Groupe ", eleve);
+
+				//getTabEleve().addEleve(eleve);
 			}
+
+
 			if(event.getSource()==boutons.get(1)){
 				//Enregistrement (ou modification) d'une note d'un élève d'un groupe
-				JDialog dialog = new JDialog (this,"Gestionnaire des notes", true);
-				dialog.setSize(400,200);
-				dialog.setResizable (false);				
-				GridLayout gl2 = new GridLayout(4, 0, 0, 25);	//Cree GridLayout
-				dialog.setLayout(gl2);
-				
-				dialog.getContentPane().add(new JButton("OK"));
-				dialog.setVisible(true);
-				
+
 			}
+
+
 			if(event.getSource()==boutons.get(2)){
 				//Affichage de la liste d'éleves d'un groupe, avec leurs notes
-				JDialog dialog = new JDialog (this,"Gestionnaire des notes", true);
-				dialog.setSize(400,200);
-				dialog.setResizable (false);				
-				GridLayout gl2 = new GridLayout(4, 0, 0, 25);	//Cree GridLayout
-				dialog.setLayout(gl2);
-				
+
+				etablissement.tabGroupe.get(Integer.parseInt(JOptionPane.showInputDialog(null,"Quel groupe voulez-vous voir?",
+				"Liste de classe", JOptionPane.QUESTION_MESSAGE))).listeEleve();
+
 			}
+
+
 			if(event.getSource()==boutons.get(3)){
 				//Affichage des statistiques d'un groupe (moyenne, variance, écart-type)
-				JDialog dialog = new JDialog (this,"Gestionnaire des notes", true);
-				dialog.setSize(400,200);
-				dialog.setResizable (false);				
-				GridLayout gl2 = new GridLayout(4, 0, 0, 25);	//Cree GridLayout
-				dialog.setLayout(gl2);
-				
+
+				etablissement.tabGroupe.get(Integer.parseInt(JOptionPane.showInputDialog(null,"Vous voulez consulter les statistiques de quel groupe?",
+				"Statistiques de classe", JOptionPane.QUESTION_MESSAGE))).listeEleve();
+
+				//etablissement.calculerMoyenne(0);
+
 			}
+
+
 			if(event.getSource()==boutons.get(4)){
+				//Permet l'arrêt du programme
 				int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous vraîment quitter?",
 				"Quitter", JOptionPane.YES_NO_OPTION);
 				if (reponse == JOptionPane.YES_OPTION) {
