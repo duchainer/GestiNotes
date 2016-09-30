@@ -23,6 +23,13 @@ class Eleve {
             addCours(Etablissement.listeCours[i]);
         }
     }
+
+    Eleve(String nom, String prenom, String date, Cours[] listeCours) {
+        this(nom,prenom,date);
+        for (int i =0; i<listeCours.length;i++){
+            cours.add(listeCours[i]);
+        }
+    }
     
 //Accesseur-Mutateurs (GET-SET)
     public String getNom() {
@@ -73,6 +80,10 @@ class Eleve {
             somme +=(my_cours.getNote()*my_cours.getValeurCours());
         }
         return somme;
+    }
+    @Override
+    public String toString(){ 
+       return (nom+", "+prenom+", "+dateNaissance+", "+calculerNoteFinale()+"%");
     }
     
 }

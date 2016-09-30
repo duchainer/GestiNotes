@@ -5,27 +5,27 @@ import java.util.ArrayList;
  */
 public class Groupe {
     //Variables
-    private String nomGroupe;
-    private ArrayList<Eleve> tabEleve;
+    private int numero;
+    private ArrayList<Eleve> tabEleve = new ArrayList<Eleve>();
     
     //Constructeurs
     public  Groupe(){
-        this("Groupe X");
+        this(-1);
     }
-    public Groupe(String nom, Eleve eleve){
-        this(nom);
+    public Groupe(int numero, Eleve eleve){
+        this(numero);
         addEleve(eleve);
     }
-    public Groupe(String nom){
-        setNomGroupe(nom);
+    public Groupe(int numero){
+        setNumero(numero);
     }
     
 //Accesseur-Mutateurs (GET-SET)
-    public String getNomGroupe() {
-        return nomGroupe;
+    public int getNumero() {
+        return numero;
     }
-    public void setNomGroupe(String nomGroupe) {
-        this.nomGroupe = nomGroupe;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
     
     public ArrayList<Eleve> getTabEleve() {
@@ -44,12 +44,14 @@ public class Groupe {
         }
     }
     
-    public ArrayList<Eleve> listeEleve(){
-       ArrayList<Eleve> liste = new ArrayList<Eleve>();
+    public String listeEleve(){
+       String liste = "";
         for(Eleve e:tabEleve){
-            liste.add(e);
+            liste+=e.toString()+"\n";
         }
+        System.out.println(liste);
         return liste;
+        
     }
 
 }
