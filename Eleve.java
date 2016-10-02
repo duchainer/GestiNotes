@@ -57,10 +57,10 @@ class Eleve {
         return Etablissement.listeCours.length;
     }
 
-    public ArrayList<Cours> getCours() {
+    public ArrayList<Cours> getTabCours() {
         return cours;
     }
-    public void setCours(ArrayList<Cours> cours) {
+    public void setTabCours(ArrayList<Cours> cours) {
         this.cours = cours;
     }
     public void addCours(Cours cours) {
@@ -70,7 +70,7 @@ class Eleve {
 //Autres méthodes
     public String codePermanent(){
         //DUchaine Raphael 29-04-1998 DR1998
-        return getNom().substring(0,1)+getPrenom().substring(0, 1)+getDateNaissance().substring(6, 9);
+        return getNom().substring(0,1)+getPrenom().substring(0, 1)+getDateNaissance().substring(6, 10);
     }
 
     double calculerNoteFinale() {
@@ -83,7 +83,7 @@ class Eleve {
     }
     @Override
     public String toString(){ 
-       return (nom+", "+prenom+", "+dateNaissance+", "+calculerNoteFinale()+"%");
+       return (nom+", "+prenom+", "+dateNaissance+", "+calculerNoteFinale()+"% "+codePermanent());
     }
     
 }

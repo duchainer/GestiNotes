@@ -4,21 +4,35 @@
  */
 class Cours {
 //variables
+    private String nom;
     private Professeur prof;
     private Double valeurCours;
     private Double note=-1.;
-//Constructeur
+//Constructeurs
     Cours(){
-        setProf(new Professeur());
-        setValeurCours(.2);
-        
+        this("cours",.2);
     }
     Cours(String nom,Double valeurCours){
-        setProf(new Professeur(nom));
+        setNom(nom);
+        setProf(new Professeur());
         setValeurCours(valeurCours);
-        
+    }
+    Cours(String nom,Double valeurCours,Double note){
+        this(nom, valeurCours);
+        setNote(note);
+    }
+    Cours(String nom,String nomProf,Double valeurCours){
+        this (nom,valeurCours);
+        setProf(new Professeur(nomProf));
     }
 //Accesseur-Mutateurs (GET-SET)
+    public String getNom() {
+        return nom;
+    }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    
     public Professeur getProf() {
         return prof;
     }
@@ -41,6 +55,11 @@ class Cours {
     }
     
 //méthodes autres
+
+    /**
+     * @return the nomCours
+     */
+    
 
 
     

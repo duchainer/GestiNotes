@@ -49,7 +49,7 @@ public class Groupe {
         for(Eleve e:tabEleve){
             liste+=e.toString()+"\n";
         }
-        System.out.println(liste);
+        //System.out.println(liste);
         return liste;
         
     }
