@@ -14,7 +14,8 @@ public final class Etablissement {
     static String[] noms = {"Attentia", "Bonniveau", "Curviligni", "Donagan", "Erzellman", "Frenchmen", "Karato", "K'amon"};
     static String[] prenoms = {"Genghis", "Conan", "Sarmoulu", "Maurice", "Zarah", "Rolphi", "Ash", "ToutTemps"};
     static String[] dates = {"01-01-0001", "21-05-1982", "30-04-1213", "21-11-1395", "04-02-0999", "31-12-2012", "16-06-0654", "09-07-6000"};
-    static Cours[] listeCours = {new Cours("Science", .2), new Cours("Math", .2), new Cours("Français", .3), new Cours("Informatique", .3)};
+    
+    static Cours[] listeCours  = {new Cours("Science", .2), new Cours("Math", .2), new Cours("Français", .3), new Cours("Informatique", .3)};
 
 //Constructeur
     public static void Etablissement() {
@@ -37,7 +38,7 @@ public final class Etablissement {
     }
 
 //Autres Méthodes
-    public static Groupe addGroupe() {
+    public static Groupe addGroupe() throws Exception{
         int numero;
         if(getTabGroupe()==null){
            numero =0;
@@ -50,7 +51,7 @@ public final class Etablissement {
         return groupe;
     }
 
-    public static Groupe addGroupe(Eleve eleve) {
+    public static Groupe addGroupe(Eleve eleve) throws Exception{
         Groupe groupe = addGroupe();
         groupe.addEleve(eleve);
         return groupe;

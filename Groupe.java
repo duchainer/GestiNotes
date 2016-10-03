@@ -9,14 +9,14 @@ public class Groupe {
     private ArrayList<Eleve> tabEleve = new ArrayList<Eleve>();
     
     //Constructeurs
-    public  Groupe(){
+    public  Groupe() throws Exception{
         this(-1);
     }
-    public Groupe(int numero, Eleve eleve){
+    public Groupe(int numero, Eleve eleve) throws Exception{
         this(numero);
         addEleve(eleve);
     }
-    public Groupe(int numero){
+    public Groupe(int numero) throws Exception{
         setNumero(numero);
     }
     
@@ -24,7 +24,12 @@ public class Groupe {
     public int getNumero() {
         return numero;
     }
-    public void setNumero(int numero) {
+    public void setNumero(int numero) throws Exception{
+        if (0 < numero) {
+            throw new Exception("Choisissez un numéro de groupe supérieur à 1");
+        } else {
+            this.numero = numero; 
+        }
         this.numero = numero;
     }
     
@@ -35,7 +40,7 @@ public class Groupe {
         this.tabEleve = tabEleve;
     }
 //méthodes autres
-    public void addEleve(Eleve eleve){
+    public void addEleve(Eleve eleve) throws Exception{
         if(getTabEleve().size()<Etablissement.ELEVES_PAR_GROUPE){
             getTabEleve().add(eleve);
         }

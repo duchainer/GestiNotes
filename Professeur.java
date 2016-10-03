@@ -12,18 +12,22 @@ class Professeur {
 //Variables
     private String nom;
 //Constructeurs
-    Professeur() {
+    Professeur()throws Exception {
         setNom("McGonagan");
     }
-    Professeur(String nom) {
+    Professeur(String nom)throws Exception {
         setNom(nom);
     }
 //Accesseur-Mutateur(GET-SET)
     public String getNom() {
         return nom;
     }
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNom(String nom) throws Exception{
+        if (nom.equals("")) {
+            throw new Exception("Aucun nom n'a ete enregistre");
+        } else {
+            this.nom = nom;
+        }
     }
 //Autres méthodes
     

@@ -70,11 +70,15 @@ public class PrincipaleFrame extends JFrame implements ActionListener {
                 String titre = "Enregistrer un élève";
                 String nom = JOptionPane.showInputDialog(null, "Entrer le nom de l'eleve:", titre, JOptionPane.QUESTION_MESSAGE);
                 String prenom = JOptionPane.showInputDialog(null, "Entrer le prenom de l'eleve:", titre, JOptionPane.QUESTION_MESSAGE);
-                String date = JOptionPane.showInputDialog(null, "Entrer la date de naissance de l'eleve (JJ-MM-AAAA):", titre, JOptionPane.QUESTION_MESSAGE);
+                String date = JOptionPane.showInputDialog(null, "Entrer la date de naissance de l'eleve (JJMMAAAA):", titre, JOptionPane.QUESTION_MESSAGE);
+                try{
                 Eleve eleve = new Eleve(nom, prenom, date);
 
                 Etablissement.addGroupe(eleve);
-
+                }catch(Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage(),"ERREUR",JOptionPane.ERROR_MESSAGE);
+                }
+                
                 int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous enregistrer un autre élève?",
                         titre, JOptionPane.YES_NO_OPTION);
                 if (reponse == JOptionPane.NO_OPTION) {
