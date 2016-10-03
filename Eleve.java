@@ -19,9 +19,6 @@ class Eleve {
         setNom(nom);
         setPrenom(prenom);
         setDateNaissance(dateNaissance);
-        for(int i =0;i<getNbrCours();i++){
-            addCours(Etablissement.listeCours[i]);
-        }
     }
 
     Eleve(String nom, String prenom, String date, Cours[] listeCours) {

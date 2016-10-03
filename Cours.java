@@ -55,10 +55,6 @@ class Cours {
     }
     
 //méthodes autres
-
-    /**
-     * @return the nomCours
-     */
     
 
 
