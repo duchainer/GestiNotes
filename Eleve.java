@@ -8,7 +8,7 @@ import java.util.*;
 class Eleve {
 //variables
     private String nom, prenom,dateNaissance;
-    private ArrayList<Cours> cours= new ArrayList<Cours>();
+    private ArrayList<Evaluation> cours= new ArrayList<Evaluation>();
     
 //Constructeur
     Eleve(){
@@ -21,7 +21,7 @@ class Eleve {
         setDateNaissance(dateNaissance);
     }
 
-    Eleve(String nom, String prenom, String date, Cours[] listeCours) {
+    Eleve(String nom, String prenom, String date, Evaluation[] listeCours) {
         this(nom,prenom,date);
         for (int i =0; i<listeCours.length;i++){
             cours.add(listeCours[i]);
@@ -54,13 +54,13 @@ class Eleve {
         return Etablissement.listeCours.length;
     }
 
-    public ArrayList<Cours> getTabCours() {
+    public ArrayList<Evaluation> getTabCours() {
         return cours;
     }
-    public void setTabCours(ArrayList<Cours> cours) {
+    public void setTabCours(ArrayList<Evaluation> cours) {
         this.cours = cours;
     }
-    public void addCours(Cours cours) {
+    public void addCours(Evaluation cours) {
         this.cours.add(cours);
     }
     
@@ -72,8 +72,8 @@ class Eleve {
 
     double calculerNoteFinale() {
         double somme =0;
-        for (int i=4;i<cours.size();i++){
-            Cours my_cours = cours.get(i);
+        for (int i=0;i<cours.size();i++){
+            Evaluation my_cours = cours.get(i);
             somme +=(my_cours.getNote()*my_cours.getValeurCours());
         }
         return somme;

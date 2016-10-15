@@ -5,8 +5,8 @@
  */
 
 /**
- *
- * @author usager
+ * 28/09/2016
+ * @author raphael
  */
 class Professeur {
 //Variables

@@ -73,7 +73,7 @@ public class PrincipaleFrame extends JFrame implements ActionListener {
                 String date = JOptionPane.showInputDialog(null, "Entrer la date de naissance de l'eleve (JJ-MM-AAAA):", titre, JOptionPane.QUESTION_MESSAGE);
                 Eleve eleve = new Eleve(nom, prenom, date);
 
-                Etablissement.addGroupe(eleve);
+                Etablissement.getTabGroupe().get(Etablissement.getTabGroupe().size()-1).addEleve(eleve);
 
                 int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous enregistrer un autre élève?",
                         titre, JOptionPane.YES_NO_OPTION);
@@ -105,7 +105,7 @@ public class PrincipaleFrame extends JFrame implements ActionListener {
                     break;
                 }
 
-                for (Cours c : eleve.getTabCours()) {
+                for (Evaluation c : eleve.getTabCours()) {
                     try {
                         String note = JOptionPane.showInputDialog(null, "Entrer la note de l'eleve en " + c.getNom().toUpperCase() + " ou -1 s'il n'en n'a pas:" + "\n Note actuelle: " + c.getNote(), titre, JOptionPane.QUESTION_MESSAGE);
                         if (note == "") {
